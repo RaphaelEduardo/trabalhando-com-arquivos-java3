@@ -3,26 +3,22 @@ package application;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Locale;
 
 public class Program {
 
 	public static void main(String[] args) {
 
-		Locale.setDefault(Locale.US);
-
-		String[] lines = new String[] { "Good morning", "Good afternon", "Good night" };
+		String[] lines = new String[] {"Bom dia", "Boa tarde", "Boa noite"};
 
 		String path = "C:\\temp\\teste.txt";
 
 		/* 
-		* Cria ou recria o arquivo no local passado no path.
+		* Acrescenta informações ao arquivo.
 		* 
-		* Caso não queira recriar o arquivo, apenas acrescentar algo... 
-		* basta utilizar na instanciação o "true" da seguinte forma:
-		* BufferedWriter bw = new BufferedWriter(new FileWriter(path, true))
+		* Para apenas criar/recriar um aquivo basta retirar o true:
+		* BufferedWriter bw = new BufferedWriter(new FileWriter(path))
 		**/
-		try (BufferedWriter bw = new BufferedWriter(new FileWriter(path))) {
+		try (BufferedWriter bw = new BufferedWriter(new FileWriter(path, true))) {
 			for (String line : lines) {
 				// não tem a quebra de linha.
 				bw.write(line);
